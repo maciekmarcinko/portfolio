@@ -453,6 +453,21 @@ main:focus{outline:none}
 .cover-stack:hover .stack-l,.cover-stack:focus-visible .stack-l{transform:translate(-50%,-50%) translateX(-54%) rotate(-9deg) scale(.84)}
 .cover-stack:hover .stack-r,.cover-stack:focus-visible .stack-r{transform:translate(-50%,-50%) translateX(54%) rotate(9deg) scale(.84)}
 .cover-stack .cover-cta{z-index:2}
+/* the same fan for rectangular boards: the first image whole in front, two cards cropped from the top behind it */
+.cover.cover-cards img{border-radius:10px}
+.cover.cover-cards img.stack-c{height:80%;max-height:80%;max-width:74%;object-fit:contain}
+.cover.cover-cards img.stack-l,.cover.cover-cards img.stack-r{height:70%;max-height:70%;aspect-ratio:.66;object-fit:cover;object-position:top center;background:var(--shot-bg)}
+.cover-cards .stack-l{transform:translate(-50%,-50%) translateX(-42%) rotate(-7deg) scale(.82)}
+.cover-cards .stack-r{transform:translate(-50%,-50%) translateX(42%) rotate(7deg) scale(.82)}
+.cover-cards:hover .stack-l,.cover-cards:focus-visible .stack-l{transform:translate(-50%,-50%) translateX(-46%) rotate(-8deg) scale(.82)}
+.cover-cards:hover .stack-r,.cover-cards:focus-visible .stack-r{transform:translate(-50%,-50%) translateX(46%) rotate(8deg) scale(.82)}
+/* small screens keep the fan still, so nothing spreads past the panel edge */
+@media (max-width:600px){
+  .cover-stack:hover .stack-l,.cover-stack:focus-visible .stack-l{transform:translate(-50%,-50%) translateX(-46%) rotate(-7deg) scale(.84)}
+  .cover-stack:hover .stack-r,.cover-stack:focus-visible .stack-r{transform:translate(-50%,-50%) translateX(46%) rotate(7deg) scale(.84)}
+  .cover-cards:hover .stack-l,.cover-cards:focus-visible .stack-l{transform:translate(-50%,-50%) translateX(-42%) rotate(-7deg) scale(.82)}
+  .cover-cards:hover .stack-r,.cover-cards:focus-visible .stack-r{transform:translate(-50%,-50%) translateX(42%) rotate(7deg) scale(.82)}
+}
 .cover.cover-crop img{height:100%;max-height:100%;aspect-ratio:9/16;object-fit:cover;object-position:top center}
 .cover-cta{
   position:absolute;left:50%;bottom:6px;
@@ -857,11 +872,47 @@ html:has(.viewer[open]){overflow:hidden}
         <h2 class="h2" id="work-title">Case studies</h2>
       </div>
       <div class="cases">
+        <article class="case card" aria-labelledby="case-faveup">
+          <figure class="case-media">
+            <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
+            <button type="button" class="cover cover-stack" data-gallery="g-faveup" data-index="0" aria-label="Open FaveUp images">
+              <img class="stack-l" src="img/full/faveup-client-2.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/faveup-owner-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/faveup-client-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="FaveUp customer app: a push notification from a local café">
+              <span class="cover-cta" aria-hidden="true">View images</span>
+            </button>
+          </figure>
+          <div class="case-body">
+            <div class="case-logos"><svg class="logo" viewBox="0 0 118 32" role="img" aria-label="FaveUp" style="--h:28px;width:103px"><defs><linearGradient id="fu-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5FDFCE"/><stop offset="1" stop-color="#36D6C6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fu-grad)"/><g transform="translate(4 4)"><path fill="#fff" d="M12 21.5C12 21.5 3.5 14.5 3.5 9C3.5 5.5 6 3.5 8.5 3.5C10.5 3.5 11.5 4.5 12 6C12.5 4.5 13.5 3.5 15.5 3.5C18 3.5 20.5 5.5 20.5 9C20.5 14.5 12 21.5 12 21.5Z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="#40E0D0" stroke-width="2"/></g><text x="40" y="22.5" font-family="'DM Sans','Hubot Sans',Arial,sans-serif" font-size="19" font-weight="700" fill="#10241F" textLength="76" lengthAdjust="spacingAndGlyphs">FaveUp</text></svg></div>
+            <h3 id="case-faveup">FaveUp</h3>
+            <p class="case-meta">Own startup · Local business · Mobile + web</p>
+            <p class="case-lede">My own startup, as CEO and Founder: a simple notification channel that lets local businesses reach their regulars with news and promotions, straight to the phone.</p>
+            <dl class="case-facts">
+              <div class="fact fact-challenge"><dt>Challenge</dt><dd>Local businesses have loyal customers but no direct way to reach them. Social posts get lost in the algorithm, and an own app is too expensive.</dd></div>
+              <div class="fact fact-approach"><dt>Approach</dt><dd>Problem discovery, a comparison with competitors like Embargo and Stampify, a customer app and an owner panel, and a QR-code test at three local businesses in Brochów.</dd></div>
+              <div class="fact fact-result"><dt>Result</dt><dd>Almost 200 people signed up to the waitlists during the QR test. The full app is now in development.</dd></div>
+            </dl>
+            <button type="button" class="view-btn" data-gallery="g-faveup" data-index="0"><span class="thumbs" aria-hidden="true"><img src="img/thumb/faveup-client-2.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-client-3.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-owner-1.webp" alt="" loading="lazy" decoding="async"></span>View all 8 images <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <ul class="gallery-data" id="g-faveup" data-title="FaveUp" hidden>
+            <li data-full="img/full/faveup-client-1.webp" data-fw="560" data-fh="1206">Customer app: push notification</li>
+            <li data-full="img/full/faveup-client-2.webp" data-fw="560" data-fh="1206">Customer app: news</li>
+            <li data-full="img/full/faveup-client-3.webp" data-fw="560" data-fh="1204">Customer app: places</li>
+            <li data-full="img/full/faveup-client-4.webp" data-fw="560" data-fh="1206">Customer app: settings</li>
+            <li data-full="img/full/faveup-owner-1.webp" data-fw="560" data-fh="1206">Owner panel: dashboard</li>
+            <li data-full="img/full/faveup-owner-2.webp" data-fw="560" data-fh="1206">Owner panel: create a push</li>
+            <li data-full="img/full/faveup-owner-3.webp" data-fw="560" data-fh="1206">Owner panel: QR code</li>
+            <li data-full="img/full/faveup-owner-4.webp" data-fw="560" data-fh="1208">Owner panel: settings</li>
+          </ul>
+        </article>
+
         <article class="case card" aria-labelledby="case-tui">
           <figure class="case-media">
             <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover" data-gallery="g-tui" data-index="0" aria-label="Open TUI.com/flights images">
-              <img src="img/full/tui-01.webp" width="1600" height="2294" loading="lazy" decoding="async" alt="Booking flow on desktop, tablet and mobile">
+            <button type="button" class="cover cover-stack cover-cards" data-gallery="g-tui" data-index="0" aria-label="Open TUI.com/flights images">
+              <img class="stack-l" src="img/full/tui-02.webp" width="1464" height="4096" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/tui-04.webp" width="1600" height="1257" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/tui-01.webp" width="1600" height="2294" loading="lazy" decoding="async" alt="Booking flow on desktop, tablet and mobile">
               <span class="cover-cta" aria-hidden="true">View images</span>
             </button>
           </figure>
@@ -889,8 +940,10 @@ html:has(.viewer[open]){overflow:hidden}
         <article class="case card" aria-labelledby="case-bk">
           <figure class="case-media">
             <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover" data-gallery="g-bk" data-index="0" aria-label="Open Bez-kontuzji.pl images">
-              <img src="img/full/bk-01.webp" width="1600" height="2412" loading="lazy" decoding="async" alt="Project overview on web, tablet and mobile">
+            <button type="button" class="cover cover-stack cover-cards" data-gallery="g-bk" data-index="0" aria-label="Open Bez-kontuzji.pl images">
+              <img class="stack-l" src="img/full/bk-06.webp" width="776" height="1674" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/bk-10.webp" width="774" height="1566" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/bk-01.webp" width="1600" height="2412" loading="lazy" decoding="async" alt="Project overview on web, tablet and mobile">
               <span class="cover-cta" aria-hidden="true">View images</span>
             </button>
           </figure>
@@ -930,8 +983,10 @@ html:has(.viewer[open]){overflow:hidden}
         <article class="case card" aria-labelledby="case-nov">
           <figure class="case-media">
             <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover" data-gallery="g-nov" data-index="0" aria-label="Open Novartis B2B e-commerce portal images">
-              <img src="img/full/nov-01.webp" width="1600" height="2419" loading="lazy" decoding="async" alt="eShop on desktop, tablet and mobile">
+            <button type="button" class="cover cover-stack cover-cards" data-gallery="g-nov" data-index="0" aria-label="Open Novartis B2B e-commerce portal images">
+              <img class="stack-l" src="img/full/nov-02.webp" width="1600" height="2186" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/nov-08.webp" width="889" height="2412" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/nov-01.webp" width="1600" height="2419" loading="lazy" decoding="async" alt="eShop on desktop, tablet and mobile">
               <span class="cover-cta" aria-hidden="true">View images</span>
             </button>
           </figure>
@@ -964,8 +1019,10 @@ html:has(.viewer[open]){overflow:hidden}
         <article class="case card" aria-labelledby="case-roche">
           <figure class="case-media">
             <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover" data-gallery="g-roche" data-index="0" aria-label="Open Roche / Genentech images">
-              <img src="img/full/roche-01.webp" width="1600" height="2204" loading="lazy" decoding="async" alt="Research application overview">
+            <button type="button" class="cover cover-stack cover-cards" data-gallery="g-roche" data-index="0" aria-label="Open Roche / Genentech images">
+              <img class="stack-l" src="img/full/roche-02.webp" width="1600" height="2978" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/roche-04.webp" width="1600" height="2983" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/roche-01.webp" width="1600" height="2204" loading="lazy" decoding="async" alt="Research application overview">
               <span class="cover-cta" aria-hidden="true">View images</span>
             </button>
           </figure>
@@ -991,39 +1048,7 @@ html:has(.viewer[open]){overflow:hidden}
             <li data-full="img/full/roche-07.webp" data-fw="1600" data-fh="2748">Submitting a second file to the same source without replacing the first</li>
           </ul>
         </article>
-        <article class="case card" aria-labelledby="case-faveup">
-          <figure class="case-media">
-            <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover cover-stack" data-gallery="g-faveup" data-index="0" aria-label="Open FaveUp images">
-              <img class="stack-l" src="img/full/faveup-client-2.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
-              <img class="stack-r" src="img/full/faveup-owner-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
-              <img class="stack-c" src="img/full/faveup-client-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="FaveUp customer app: a push notification from a local café">
-              <span class="cover-cta" aria-hidden="true">View images</span>
-            </button>
-          </figure>
-          <div class="case-body">
-            <div class="case-logos"><svg class="logo" viewBox="0 0 118 32" role="img" aria-label="FaveUp" style="--h:28px;width:103px"><defs><linearGradient id="fu-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5FDFCE"/><stop offset="1" stop-color="#36D6C6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fu-grad)"/><g transform="translate(4 4)"><path fill="#fff" d="M12 21.5C12 21.5 3.5 14.5 3.5 9C3.5 5.5 6 3.5 8.5 3.5C10.5 3.5 11.5 4.5 12 6C12.5 4.5 13.5 3.5 15.5 3.5C18 3.5 20.5 5.5 20.5 9C20.5 14.5 12 21.5 12 21.5Z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="#40E0D0" stroke-width="2"/></g><text x="40" y="22.5" font-family="'DM Sans','Hubot Sans',Arial,sans-serif" font-size="19" font-weight="700" fill="#10241F" textLength="76" lengthAdjust="spacingAndGlyphs">FaveUp</text></svg></div>
-            <h3 id="case-faveup">FaveUp</h3>
-            <p class="case-meta">Own startup · Local business · Mobile + web</p>
-            <p class="case-lede">My own startup, as CEO and Founder: a simple notification channel that lets local businesses reach their regulars with news and promotions, straight to the phone.</p>
-            <dl class="case-facts">
-              <div class="fact fact-challenge"><dt>Challenge</dt><dd>Local businesses have loyal customers but no direct way to reach them. Social posts get lost in the algorithm, and an own app is too expensive.</dd></div>
-              <div class="fact fact-approach"><dt>Approach</dt><dd>Problem discovery, a comparison with competitors like Embargo and Stampify, a customer app and an owner panel, and a QR-code test at three local businesses in Brochów.</dd></div>
-              <div class="fact fact-result"><dt>Result</dt><dd>Almost 200 people signed up to the waitlists during the QR test. The full app is now in development.</dd></div>
-            </dl>
-            <button type="button" class="view-btn" data-gallery="g-faveup" data-index="0"><span class="thumbs" aria-hidden="true"><img src="img/thumb/faveup-client-2.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-client-3.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-owner-1.webp" alt="" loading="lazy" decoding="async"></span>View all 8 images <span class="arrow" aria-hidden="true">→</span></button>
-          </div>
-          <ul class="gallery-data" id="g-faveup" data-title="FaveUp" hidden>
-            <li data-full="img/full/faveup-client-1.webp" data-fw="560" data-fh="1206">Customer app: push notification</li>
-            <li data-full="img/full/faveup-client-2.webp" data-fw="560" data-fh="1206">Customer app: news</li>
-            <li data-full="img/full/faveup-client-3.webp" data-fw="560" data-fh="1204">Customer app: places</li>
-            <li data-full="img/full/faveup-client-4.webp" data-fw="560" data-fh="1206">Customer app: settings</li>
-            <li data-full="img/full/faveup-owner-1.webp" data-fw="560" data-fh="1206">Owner panel: dashboard</li>
-            <li data-full="img/full/faveup-owner-2.webp" data-fw="560" data-fh="1206">Owner panel: create a push</li>
-            <li data-full="img/full/faveup-owner-3.webp" data-fw="560" data-fh="1206">Owner panel: QR code</li>
-            <li data-full="img/full/faveup-owner-4.webp" data-fw="560" data-fh="1208">Owner panel: settings</li>
-          </ul>
-        </article>
+
       </div>
     </div>
   </section>
