@@ -440,6 +440,19 @@ main:focus{outline:none}
   transition:transform .45s ease,filter .45s ease;
 }
 .cover:hover img,.cover:focus-visible img{--lift:-6px}
+/* FaveUp: three phone screens fanned out; the side phones spread on hover */
+.cover.cover-stack img{
+  position:absolute;top:50%;left:50%;
+  height:88%;max-height:88%;width:auto;max-width:none;
+  border-radius:0;box-shadow:none;
+  filter:drop-shadow(0 24px 30px rgba(0,0,0,.55));
+}
+.cover-stack .stack-c{transform:translate(-50%,-50%) translateY(var(--lift,0px))}
+.cover-stack .stack-l{transform:translate(-50%,-50%) translateX(-46%) rotate(-7deg) scale(.84)}
+.cover-stack .stack-r{transform:translate(-50%,-50%) translateX(46%) rotate(7deg) scale(.84)}
+.cover-stack:hover .stack-l,.cover-stack:focus-visible .stack-l{transform:translate(-50%,-50%) translateX(-54%) rotate(-9deg) scale(.84)}
+.cover-stack:hover .stack-r,.cover-stack:focus-visible .stack-r{transform:translate(-50%,-50%) translateX(54%) rotate(9deg) scale(.84)}
+.cover-stack .cover-cta{z-index:2}
 .cover.cover-crop img{height:100%;max-height:100%;aspect-ratio:9/16;object-fit:cover;object-position:top center}
 .cover-cta{
   position:absolute;left:50%;bottom:6px;
@@ -978,24 +991,37 @@ html:has(.viewer[open]){overflow:hidden}
             <li data-full="img/full/roche-07.webp" data-fw="1600" data-fh="2748">Submitting a second file to the same source without replacing the first</li>
           </ul>
         </article>
-        <article class="case card" aria-labelledby="case-concepts">
+        <article class="case card" aria-labelledby="case-faveup">
           <figure class="case-media">
             <div class="glow glow-panel" style="left:15%;bottom:-38%;--glow-size:70%" aria-hidden="true"></div>
-            <button type="button" class="cover cover-crop" data-gallery="g-concepts" data-index="0" aria-label="Open Concept projects images">
-              <img src="img/full/concept-01.webp" width="502" height="4096" loading="lazy" decoding="async" alt="Mobile app concept">
+            <button type="button" class="cover cover-stack" data-gallery="g-faveup" data-index="0" aria-label="Open FaveUp images">
+              <img class="stack-l" src="img/full/faveup-client-2.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
+              <img class="stack-r" src="img/full/faveup-owner-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="">
+              <img class="stack-c" src="img/full/faveup-client-1.webp" width="560" height="1206" loading="lazy" decoding="async" alt="FaveUp customer app: a push notification from a local café">
               <span class="cover-cta" aria-hidden="true">View images</span>
             </button>
           </figure>
           <div class="case-body">
-            <div class="case-logos"><span class="logo-text">PERSONAL WORK</span></div>
-            <h3 id="case-concepts">Concept projects</h3>
-            <p class="case-meta">Concept design · UI exploration</p>
-            <p class="case-lede">Experiments with new patterns, interactions and visual styles, and a key source of inspiration early in my career.</p>
-            <button type="button" class="view-btn" data-gallery="g-concepts" data-index="0"><span class="thumbs" aria-hidden="true"><img src="img/thumb/concept-01.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/concept-02.webp" alt="" loading="lazy" decoding="async"></span>View all 2 images <span class="arrow" aria-hidden="true">→</span></button>
+            <div class="case-logos"><svg class="logo" viewBox="0 0 118 32" role="img" aria-label="FaveUp" style="--h:28px;width:103px"><defs><linearGradient id="fu-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5FDFCE"/><stop offset="1" stop-color="#36D6C6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fu-grad)"/><g transform="translate(4 4)"><path fill="#fff" d="M12 21.5C12 21.5 3.5 14.5 3.5 9C3.5 5.5 6 3.5 8.5 3.5C10.5 3.5 11.5 4.5 12 6C12.5 4.5 13.5 3.5 15.5 3.5C18 3.5 20.5 5.5 20.5 9C20.5 14.5 12 21.5 12 21.5Z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="#40E0D0" stroke-width="2"/></g><text x="40" y="22.5" font-family="'DM Sans','Hubot Sans',Arial,sans-serif" font-size="19" font-weight="700" fill="#10241F" textLength="76" lengthAdjust="spacingAndGlyphs">FaveUp</text></svg></div>
+            <h3 id="case-faveup">FaveUp</h3>
+            <p class="case-meta">Own startup · Local business · Mobile + web</p>
+            <p class="case-lede">My own startup, as CEO and Founder: a simple notification channel that lets local businesses reach their regulars with news and promotions, straight to the phone.</p>
+            <dl class="case-facts">
+              <div class="fact fact-challenge"><dt>Challenge</dt><dd>Local businesses have loyal customers but no direct way to reach them. Social posts get lost in the algorithm, and an own app is too expensive.</dd></div>
+              <div class="fact fact-approach"><dt>Approach</dt><dd>Problem discovery, a comparison with competitors like Embargo and Stampify, a customer app and an owner panel, and a QR-code test at three local businesses in Brochów.</dd></div>
+              <div class="fact fact-result"><dt>Result</dt><dd>Almost 200 people signed up to the waitlists during the QR test. The full app is now in development.</dd></div>
+            </dl>
+            <button type="button" class="view-btn" data-gallery="g-faveup" data-index="0"><span class="thumbs" aria-hidden="true"><img src="img/thumb/faveup-client-2.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-client-3.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb/faveup-owner-1.webp" alt="" loading="lazy" decoding="async"></span>View all 8 images <span class="arrow" aria-hidden="true">→</span></button>
           </div>
-          <ul class="gallery-data" id="g-concepts" data-title="Concept projects" hidden>
-            <li data-full="img/full/concept-01.webp" data-fw="502" data-fh="4096">Mobile app concept</li>
-            <li data-full="img/full/concept-02.webp" data-fw="724" data-fh="4096">Website concept</li>
+          <ul class="gallery-data" id="g-faveup" data-title="FaveUp" hidden>
+            <li data-full="img/full/faveup-client-1.webp" data-fw="560" data-fh="1206">Customer app: push notification</li>
+            <li data-full="img/full/faveup-client-2.webp" data-fw="560" data-fh="1206">Customer app: news</li>
+            <li data-full="img/full/faveup-client-3.webp" data-fw="560" data-fh="1204">Customer app: places</li>
+            <li data-full="img/full/faveup-client-4.webp" data-fw="560" data-fh="1206">Customer app: settings</li>
+            <li data-full="img/full/faveup-owner-1.webp" data-fw="560" data-fh="1206">Owner panel: dashboard</li>
+            <li data-full="img/full/faveup-owner-2.webp" data-fw="560" data-fh="1206">Owner panel: create a push</li>
+            <li data-full="img/full/faveup-owner-3.webp" data-fw="560" data-fh="1206">Owner panel: QR code</li>
+            <li data-full="img/full/faveup-owner-4.webp" data-fw="560" data-fh="1208">Owner panel: settings</li>
           </ul>
         </article>
       </div>
